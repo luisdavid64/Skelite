@@ -1,0 +1,6 @@
+.DS_Store
+datasets
+__pycache__
+model/__pycache__
+logs
+outputs
