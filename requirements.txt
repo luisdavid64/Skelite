@@ -1,0 +1,17 @@
+torch==2.2.0
+matplotlib
+torchvision==0.17.0
+chardet
+termcolor
+torchmeta==1.8.0
+networkx
+panel==0.14.0
+pandas==1.5.2
+monai==1.0.0
+gudhi
+optuna
+FastGeodis
+wandb
+kornia
+#monai
+loss-landscapes

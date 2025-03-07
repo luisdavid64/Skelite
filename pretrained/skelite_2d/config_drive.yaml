@@ -1,0 +1,53 @@
+# Logger options
+log_iter: 100                   # How often to log the training loss 
+val_epoch: 20                  # How often to validate testing and save output images during training
+image_save_epoch: 100           # How often do you want to save output images during training
+
+# Optimization options
+max_epoch: 1000               # Maximum number of training iterations
+batch_size: 64           # Batch size (320x320)
+val_batch_size: 32           # Batch size (320x320)
+loss: ["TPixSkel", "clDice", "pdt", "BCE"]
+optimizer: Adam               # Optimizer for trainings
+weight_decay: 0.0000001       # Weight decay
+beta1: 0.9                    # Adam parameter
+beta2: 0.999                  # Adam parameter
+lr: 0.00004                      # Initial learning rate
+metrics: ["L1_pos", "L1_neg", "dice", "clDice", "betti" ]
+
+################## 3D CT Image ###################
+# Model options (3D CT)
+net_type: reg_erosion
+net: 
+  network_input_size: 512     # Input size for network
+  network_output_size: 72 
+  network_depth: 1            # Depth of MLP layers
+  network_width: 200          # Width of MLP layers
+  kernel_size: [3,3]          # Larger kernel, better skel
+  skel_num_iter: 8 
+  skel_channels: 64            # Depth of MLP layers
+  use_morphology_layer: False
+  mip_style: False
+  binarize: False
+  use_extraction_module: False
+  use_inception: False
+  extract_feats: ["manhattan_max"]
+
+# Use this to adapt the convolutional layer
+hypo_net:
+  network_input_channels: 3    # Number of input channels
+  network_depth: 2             # Number of input channels
+
+encoder:
+  embedding: none            #  Input embedding method
+  scale: 2
+  embedding_size: 256         # Embedding size for input Fourier feature encoding
+  coordinates_size: 1
+
+
+# Data
+data: drive
+data_root: datasets/drive_test
+  #data_root: datasets/binary_bezier_even_more_256x256
+set: train
+
