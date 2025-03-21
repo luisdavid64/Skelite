@@ -1,6 +1,6 @@
 # Skelite: Compact Neural Networks for Efficient Iterative Skeletonization
 
-Code repository for _Skelite: Compact Neural Networks for Efficient Iterative Skeletonization_. Training data is being added soon.
+Code for the paper [_Skelite: Compact Neural Networks for Efficient Iterative Skeletonization_](https://arxiv.org/abs/2503.07369). Training data is being added soon.
 
 
 ## Abstract
