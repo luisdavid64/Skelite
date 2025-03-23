@@ -1,12 +1,7 @@
 import imageio
-from model.soft_skeletonize import SoftSkeletonize as SoftMorphSkeletonize
-from model.skeletonize import Skeletonize as SimplePointSkeletonize
 import os
-from utils.model_utils import get_model, build_model
-from data.utils import get_config 
 import torch
-import pathlib
-import glob
+import nibabel as nib
 
 def add_loss_data(dict1, dict2):
     if not dict1:
@@ -64,3 +59,11 @@ def load_image(path):
     img = imageio.imread(path) / 255.
     img = torch.tensor(img, dtype=torch.float32).unsqueeze(0).unsqueeze(0)
     return img
+
+def load_nii(path):
+    img = nib.load(path)
+    affine = img.affine
+    img = img.get_fdata().squeeze()
+    img = torch.from_numpy(img).float()
+    img = img.unsqueeze(0).unsqueeze(0)
+    return img, affine
